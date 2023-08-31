@@ -3,7 +3,7 @@ import random
 import requests
 
 # Set your API key and endpoint
-api_key = "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"
+api_key = "sk-<your key>"
 endpoint = "https://api.openai.com/v1/chat/completions"
 
 
