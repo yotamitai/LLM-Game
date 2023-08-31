@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-Based Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Text-Based Game</h1>
+        <div class="points">Points: {{ points }}</div>
+        <h2>Scenario:</h2>
+        <p>{{ scenario.text }}</p>
+        <h3><b>Regardless of your own opinion on the matter,<br> which of the following arguments is better constructed?</b></h3>
+        <form method="POST" onsubmit="reloadPage()">
+            {% for idx, option in scenario.options|enumerate(1) %}
+                <input type="radio" name="choice" value="{{ idx }}"> {{ option }}<br><br>
+            {% endfor %}
+            <input type="submit" value="Choose">
+        </form>
+    </div>
+</body>
+</html>
