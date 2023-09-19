@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RLHF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function reloadPage() {
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>RLHF</h1>
+        {% if points %}
+            <div class="points">Points: {{ points }}</div>
+        {% endif %}
+        <h2>Scenario:</h2>
+        <p>{{ scenario.text }}</p>
+        <h3><b>Regardless of your own opinion on the matter,<br> which of the following answers is better?</b></h3>
+        <form method="POST" onsubmit="reloadPage()">
+            {% for idx, option in scenario.options|enumerate(1) %}
+                <input type="radio" name="choice" value="{{ idx }}" required> {{ option }}<br><br>
+            {% endfor %}
+            {% if interactive %}
+                <label for="text_response">Text Response:</label>
+                <input type="text" id="text_response" name="text_response" required>
+            {% endif %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

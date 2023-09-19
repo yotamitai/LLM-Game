@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session
 import random
 
-from game.call_api import call_api, get_scenario
+from debate_game.call_api import call_api, get_scenario
 
 app = Flask(__name__)
 
